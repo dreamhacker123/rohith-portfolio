@@ -28,6 +28,7 @@
     "react-router-dom": "^7.6.3",
     "react-scroll-parallax": "^3.4.5",
     "react-tsparticles": "^2.12.2",
+    "sitemap": "^8.0.0",
     "tailwindcss": "^4.1.11",
     "three": "^0.178.0",
     "tsparticles": "^3.8.1"
