@@ -17,7 +17,7 @@ export const PhotoBanner = () => {
         {imageUrl ? (
           <img
             src={imageUrl}
-            alt="Banner"
+            alt="Photo of Rohith Satya Nivas Muchakarla"
             className={`h-full aspect-square object-cover ${theme.photoFilter}`}
             />
         ) : (
