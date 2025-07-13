@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+
+#root {
+  margin: 0;
+  text-align: center;
+  height: fit-content;
+}
+
+.perspective {
+  perspective: 1000px;
+}
+
+.themed-text-yellow{
+  color: #f2ac16;
+}
+
+.themed-text-purple{
+  color: #2e0161;
+}
+
+.themed-bg-yellow {
+  background-color: #f2ac16;
+}
+.themed-bg-purple {
+  background-color: #2e0161;
+}
+
+/* global styles or tailwind.css */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+
+
