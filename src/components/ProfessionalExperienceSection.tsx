@@ -14,15 +14,6 @@ type Experience = {
 
 const experiences: Experience[] = [
   {
-    role: "Full Stack Generalist Engineer",
-    company: "Adaline AI",
-    duration: "Apr 2025 – Jun 2025 · 3 mos",
-    location: "Bengaluru, Karnataka, India · Remote",
-    type: "Full-time",
-    skills: ["React.js", "Tailwind CSS", "Express.js", "Node.js", "TypeScript"],
-    logo: "https://res.cloudinary.com/dqsxhtkyo/image/upload/v1752363270/adaline_logo_xojkri.jpg",
-  },
-  {
     role: "SDE",
     company: "Safe Security",
     duration: "Jun 2022 – Nov 2023 · 1 yr 6 mos",
