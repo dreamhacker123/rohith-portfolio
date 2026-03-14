@@ -7,7 +7,7 @@ export const MoreAboutSection: React.FC = () => {
       style={{
         background: `linear-gradient(162deg, transparent 50%, white 50%)`,
       }}
-      className="flex w-full h-screen justify-center"
+      className="flex w-full min-h-screen md:h-screen justify-center py-8 md:py-0"
     >
 
       <InfiniteScrollSection />

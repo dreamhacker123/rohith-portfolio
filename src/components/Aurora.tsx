@@ -210,5 +210,8 @@ export default function Aurora(props:AuroraProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [amplitude]);
 
-  return <div ref={ctnDom} className="aurora-container w-full absolute top-0 left-0" />;
+  return <div ref={ctnDom} className="aurora-container w-full h-full absolute inset-0 pointer-events-none" style={{
+    maskImage: 'linear-gradient(to bottom, transparent 0%, transparent 100px, black 150px)',
+    WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, transparent 100px, black 150px)'
+  }} />;
 }

@@ -14,26 +14,14 @@ function AvatarModel() {
 
 export default function ModelViewer() {
   return (
-    <div onWheel={(e) => {
-        const el = e.currentTarget;
-        const isAtTop = el.scrollTop === 0 && e.deltaY < 0;
-        const isAtBottom =
-          el.scrollHeight - el.scrollTop === el.clientHeight && e.deltaY > 0;
-    
-        if (isAtTop || isAtBottom) {
-          e.stopPropagation(); // prevent scroll bubbling
-          e.preventDefault();  // prevent native propagation
-        }
-      }}
-         className="w-[40%]
-          h-[1200px] z-100 bg-transparent rounded-xl absolute top-[90%] -left-[0%]">
+    <div className="w-full h-full relative">
       <Canvas camera={{ position: [0, 1, 3], fov: 50 }}>
         <ambientLight intensity={3.0} />
         <directionalLight position={[3, 3, 3]} />
         <Suspense fallback={null}>
           <AvatarModel />
         </Suspense>
-        <OrbitControls enableZoom enablePan autoRotate />
+        <OrbitControls enableZoom enablePan autoRotate autoRotateSpeed={2} />
       </Canvas>
     </div>
   );

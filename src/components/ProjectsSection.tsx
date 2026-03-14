@@ -1,88 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FolderKanban, Github } from "lucide-react";
 
-type Repo = {
-  updated_at: string | number | Date;
-  id: number;
-  name: string;
-  html_url: string;
-  description: string;
-  language: string;
-};
-
 export const ProjectsSection: React.FC = () => {
-  const [repos, setRepos] = useState<Repo[]>([]);
-
-  useEffect(() => {
-    fetch("https://api.github.com/users/dreamhacker123/repos")
-      .then((res) => res.json())
-      .then((data) => {
-        const filtered = data
-  .filter((repo: Repo) => repo.description && repo.description.trim() !== "")
-  .sort(
-    (a: Repo, b: Repo) =>
-      new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
-  )
-  .slice(0, 6);
-
-setRepos(filtered);
-
-      });
-  }, []);
-
   return (
     <section
       id="projects"
-      className="w-full min-h-screen flex flex-col bg-white items-center py-10 px-4"
+      className="w-full min-h-screen flex flex-col bg-gradient-to-br from-black via-gray-900 to-black items-center justify-center py-16 px-4"
     >
-      <div className="flex items-center gap-4 mb-8">
-        <FolderKanban className="w-8 h-8 text-purple-600" />
-        <h2 className="text-4xl font-bold themed-text-purple">Projects</h2>
-        <a
-          href="https://github.com/dreamhacker123"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-4 p-2 rounded-full hover:bg-gray-200 transition"
-        >
-          <Github className="w-6 h-6 text-black" />
-        </a>
+      <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 mb-10">
+        <FolderKanban className="w-6 h-6 md:w-8 md:h-8 text-red-500" />
+        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(239,68,68,0.5)]">Projects</h2>
       </div>
 
-      <div className="grid grid-cols-1 z-80 md:grid-cols-3 gap-6 w-full max-w-6xl">
-        {repos.map((repo) => (
-          <a
-            key={repo.id}
-            href={repo.html_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gray-50 rounded-xl shadow hover:shadow-md p-6 transition border border-purple-100"
-          >
-            <h3 className="text-lg font-semibold text-purple-800 mb-2">
-              {repo.name}
-            </h3>
-            <p className="text-sm text-gray-600 mb-3">
-              {repo.description || "No description provided."}
-            </p>
-            <span className="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded-full">
-              {repo.language || "Unknown"}
-            </span>
-          </a>
-        ))}
-
-        {/* Full-width "View more projects" card */}
+      <div className="w-full max-w-4xl">
+        {/* "View more projects" card */}
         <a
           href="https://github.com/dreamhacker123"
           target="_blank"
           rel="noopener noreferrer"
-          className="md:col-span-3 bg-purple-50 border border-purple-200 rounded-xl flex flex-col md:flex-row items-center justify-between p-6 hover:shadow-md transition"
+          className="bg-black/60 backdrop-blur-sm border-2 border-red-500/30 rounded-2xl flex flex-col md:flex-row items-center justify-between p-6 md:p-8 hover:shadow-2xl hover:shadow-red-500/30 hover:border-red-500/50 transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
         >
           <div className="flex items-center gap-4">
-            <Github className="w-8 h-8 text-purple-800" />
-            <span className="text-xl font-semibold text-purple-900">
+            <Github className="w-10 h-10 md:w-12 md:h-12 text-red-500" />
+            <span className="text-xl md:text-2xl font-semibold text-gray-200">
               @dreamhacker123
             </span>
           </div>
-          <p className="text-sm text-gray-600 mt-2 md:mt-0">
+          <p className="text-sm md:text-base text-gray-400 mt-4 md:mt-0">
             Click here to explore more projects on GitHub →
           </p>
         </a>

@@ -59,27 +59,11 @@ export const WriteToMeModal = () => {
       <div
         role="button"
         onClick={openModal}
-        style={{
-          position: 'fixed',
-          left: '1.5rem',
-          bottom: '3.2rem',
-          zIndex: 150,
-          backgroundColor: 'white',
-          color: 'black',
-          fontWeight: 'bold',
-          padding: '0.5rem 1.0rem',
-          borderRadius: '9999px',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.5rem',
-          cursor: 'pointer',
-          transition: 'transform 0.3s ease',
-        }}
-        onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
-        onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+        className="fixed left-4 bottom-6 md:left-6 md:bottom-6 z-[150] bg-gradient-to-r from-black to-gray-900 border-2 border-red-500 hover:bg-gradient-to-r hover:from-red-500 hover:to-red-600 text-white font-bold px-4 py-3 md:px-5 md:py-3 rounded-full shadow-xl shadow-red-500/30 hover:shadow-2xl hover:shadow-red-500/50 flex items-center gap-2 cursor-pointer transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 text-sm md:text-base"
       >
-        <PenLine style={{ width: '20px', height: '20px' }} /> Write to Me
+        <PenLine className="w-4 h-4 md:w-5 md:h-5" />
+        <span className="hidden sm:inline">Write to Me</span>
+        <span className="sm:hidden">Message</span>
       </div>
 
       {/* Modal */}
@@ -88,24 +72,25 @@ export const WriteToMeModal = () => {
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'linear-gradient(to bottom right, rgba(0,0,0,0.7), rgba(128,0,128,0.4))',
+            background: 'linear-gradient(to bottom right, rgba(0,0,0,0.95), rgba(26,26,26,0.9))',
             zIndex: 120,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             padding: '1rem',
-            backdropFilter: 'blur(4px)',
+            backdropFilter: 'blur(8px)',
           }}
         >
           <div
             style={{
-              backgroundColor: 'white',
+              backgroundColor: '#0a0a0a',
               borderRadius: '1rem',
               padding: '1.5rem',
               maxWidth: '400px',
               width: '100%',
               position: 'relative',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+              boxShadow: '0 0 40px rgba(239, 68, 68, 0.3)',
+              border: '1px solid rgba(239, 68, 68, 0.3)',
             }}
           >
             <button
@@ -115,7 +100,7 @@ export const WriteToMeModal = () => {
                 top: '0.5rem',
                 right: '0.75rem',
                 fontSize: '1.25rem',
-                color: '#666',
+                color: '#ef4444',
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
@@ -123,13 +108,13 @@ export const WriteToMeModal = () => {
             >
               ×
             </button>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: '#9333ea', marginBottom: '1rem' }}>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: '#ef4444', marginBottom: '1rem', textShadow: '0 0 10px rgba(239, 68, 68, 0.5)' }}>
               Leave a Message
             </h3>
 
-            <form ref={formRef} onSubmit={sendEmail} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: '#4b0082' }}>
+            <form ref={formRef} onSubmit={sendEmail} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: '#f3f4f6' }}>
               <div>
-                <label htmlFor="user_name" style={{ display: 'block', fontWeight: 500, marginBottom: '0.25rem', color: '#6b21a8' }}>
+                <label htmlFor="user_name" style={{ display: 'block', fontWeight: 500, marginBottom: '0.25rem', color: '#e5e7eb' }}>
                   Your Name
                 </label>
                 <input
@@ -139,15 +124,17 @@ export const WriteToMeModal = () => {
                   required
                   style={{
                     width: '100%',
-                    border: '1px solid #ccc',
+                    border: '1px solid rgba(239, 68, 68, 0.3)',
                     borderRadius: '6px',
                     padding: '0.5rem 0.75rem',
-                    outlineColor: '#9333ea',
+                    outlineColor: '#ef4444',
+                    backgroundColor: '#1a1a1a',
+                    color: '#f3f4f6',
                   }}
                 />
               </div>
               <div>
-                <label htmlFor="email" style={{ display: 'block', fontWeight: 500, marginBottom: '0.25rem', color: '#6b21a8' }}>
+                <label htmlFor="email" style={{ display: 'block', fontWeight: 500, marginBottom: '0.25rem', color: '#e5e7eb' }}>
                   Your Email
                 </label>
                 <input
@@ -157,15 +144,17 @@ export const WriteToMeModal = () => {
                   required
                   style={{
                     width: '100%',
-                    border: '1px solid #ccc',
+                    border: '1px solid rgba(239, 68, 68, 0.3)',
                     borderRadius: '6px',
                     padding: '0.5rem 0.75rem',
-                    outlineColor: '#9333ea',
+                    outlineColor: '#ef4444',
+                    backgroundColor: '#1a1a1a',
+                    color: '#f3f4f6',
                   }}
                 />
               </div>
               <div>
-                <label htmlFor="user_message" style={{ display: 'block', fontWeight: 500, marginBottom: '0.25rem', color: '#6b21a8' }}>
+                <label htmlFor="user_message" style={{ display: 'block', fontWeight: 500, marginBottom: '0.25rem', color: '#e5e7eb' }}>
                   Your Message
                 </label>
                 <textarea
@@ -175,11 +164,13 @@ export const WriteToMeModal = () => {
                   required
                   style={{
                     width: '100%',
-                    border: '1px solid #ccc',
+                    border: '1px solid rgba(239, 68, 68, 0.3)',
                     borderRadius: '6px',
                     padding: '0.5rem 0.75rem',
                     resize: 'none',
-                    outlineColor: '#9333ea',
+                    outlineColor: '#ef4444',
+                    backgroundColor: '#1a1a1a',
+                    color: '#f3f4f6',
                   }}
                 />
               </div>
@@ -191,7 +182,7 @@ export const WriteToMeModal = () => {
                   onClick={closeModal}
                   style={{
                     background: 'none',
-                    color: '#666',
+                    color: '#9ca3af',
                     border: 'none',
                     cursor: 'pointer',
                   }}
@@ -202,13 +193,14 @@ export const WriteToMeModal = () => {
                   type="submit"
                   disabled={isSending}
                   style={{
-                    backgroundColor: '#9333ea',
+                    backgroundColor: '#ef4444',
                     color: 'white',
                     border: 'none',
                     padding: '0.5rem 1rem',
                     borderRadius: '6px',
                     cursor: 'pointer',
                     opacity: isSending ? 0.6 : 1,
+                    boxShadow: '0 0 20px rgba(239, 68, 68, 0.3)',
                   }}
                 >
                   {isSending ? 'Sending...' : 'Send'}
@@ -216,7 +208,7 @@ export const WriteToMeModal = () => {
               </div>
 
               {status && (
-                <p style={{ fontSize: '0.875rem', marginTop: '0.75rem', textAlign: 'center', color: status.includes("✅") ? 'green' : 'red' }}>
+                <p style={{ fontSize: '0.875rem', marginTop: '0.75rem', textAlign: 'center', color: status.includes("✅") ? '#10b981' : '#ef4444' }}>
                   {status}
                 </p>
               )}
