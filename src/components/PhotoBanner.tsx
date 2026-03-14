@@ -3,16 +3,12 @@ import { useTheme } from "../api-handlers/themeContext"
 
 export const PhotoBanner = () => {
   const theme = useTheme()
-  const imageUrl = "https://res.cloudinary.com/dqsxhtkyo/image/upload/v1752396946/WhatsApp_Image_2025-07-13_at_2.24.06_PM_sgdvhu.jpg"
+  const imageUrl = "/my_profile_photo.jpg"
 
   return (
-    <div className={ `h-90 flex items-center justify-center mb-3`}>
+    <div className="h-auto flex items-center justify-center mb-6">
       <div
-        className={`rounded-full border-b-white border-4 overflow-hidden shadow-md ${theme.text} flex items-center justify-center`}
-        style={{
-          width: "300px",
-          height: "300px",
-        }}
+        className={`w-[200px] h-[200px] md:w-[280px] md:h-[280px] rounded-full border-4 border-red-500 shadow-2xl shadow-red-500/50 overflow-hidden ${theme.text} flex items-center justify-center ring-4 ring-red-500/30 transition-all duration-300 hover:scale-105 hover:ring-red-500/60 hover:shadow-red-500/70"`}
       >
         {imageUrl ? (
           <img

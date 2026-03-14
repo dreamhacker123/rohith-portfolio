@@ -19,9 +19,9 @@ export default function BackToTop() {
   return visible ? (
     <div
       onClick={scrollToTop}
-      className="fixed bottom-6 font-bold right-6 z-50 themed-bg-yellow hover:bg-white/20 themed-text-purple rounded-full p-3 shadow-xl backdrop-blur-sm transition-all duration-300"
+      className="fixed bottom-6 right-4 md:bottom-6 md:right-6 z-50 bg-gradient-to-r from-black to-gray-900 border-2 border-red-500 hover:from-red-500 hover:to-red-600 text-white rounded-full p-3 shadow-xl shadow-red-500/30 hover:shadow-2xl hover:shadow-red-500/50 backdrop-blur-sm transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:scale-110"
     >
-      <ArrowUp className="w-5 h-5" />
+      <ArrowUp className="w-5 h-5 md:w-6 md:h-6" />
     </div>
   ) : null;
 }

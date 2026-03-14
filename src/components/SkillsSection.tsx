@@ -13,15 +13,17 @@ import {
 const skills = [
   {
     title: "Languages",
-    icon: <Code className="w-6 h-6 text-purple-600" />,
-    items: ["C/C++ (DSA)", "JavaScript", "Python", "SQL", "Shell"],
+    icon: <Code className="w-6 h-6 text-red-500" />,
+    items: ["C/C++ (DSA)", "JavaScript", "TypeScript", "Python", "Swift", "SQL", "Shell"],
   },
   {
-    title: "Web Technologies",
-    icon: <Cpu className="w-6 h-6 text-purple-600" />,
+    title: "Web & Mobile Technologies",
+    icon: <Cpu className="w-6 h-6 text-red-500" />,
     items: [
       "React",
-      "Typescript",
+      "React Native",
+      "Next.js",
+      "iOS Development",
       "Webpack",
       "NodeJS",
       "Express",
@@ -41,12 +43,12 @@ const skills = [
   },
   {
     title: "Database Technologies",
-    icon: <Database className="w-6 h-6 text-purple-600" />,
-    items: ["MySQL", "Postgres", "Firebase"],
+    icon: <Database className="w-6 h-6 text-red-500" />,
+    items: ["PostgreSQL", "MySQL", "Firebase", "DynamoDB"],
   },
   {
     title: "Important Libraries",
-    icon: <Hammer className="w-6 h-6 text-purple-600" />,
+    icon: <Hammer className="w-6 h-6 text-red-500" />,
     items: [
       "Axios",
       "Jest",
@@ -64,13 +66,13 @@ const skills = [
     ],
   },
   {
-    title: "CI/CD Tools",
-    icon: <Settings className="w-6 h-6 text-purple-600" />,
-    items: ["Jenkins", "Docker", "Git", "Bitbucket", "Heroku"],
+    title: "CI/CD & Architecture",
+    icon: <Settings className="w-6 h-6 text-red-500" />,
+    items: ["Software Architecture", "Microservices", "Jenkins", "Docker", "Git", "Bitbucket", "Heroku"],
   },
   {
     title: "Other Tools & Software",
-    icon: <Wrench className="w-6 h-6 text-purple-600" />,
+    icon: <Wrench className="w-6 h-6 text-red-500" />,
     items: [
       "Visual Studio Code",
       "Linux",
@@ -81,7 +83,7 @@ const skills = [
   },
   {
     title: "Ongoing Certifications / Courses",
-    icon: <BookOpen className="w-6 h-6 text-purple-600" />,
+    icon: <BookOpen className="w-6 h-6 text-red-500" />,
     items: [
       "Micro-Frontends with React",
       "Web Development with Golang",
@@ -95,23 +97,20 @@ export const SkillsSection: React.FC = () => {
   return (
     <section
       id="skills"
-      className="w-full min-h-screen flex flex-col items-center py-20 px-4"
-      style={{
-        background: `linear-gradient(162deg, transparent 20%, #facc15 20%, #facc15 60%, #ffffff 60%)`, // tailwind yellow-400
-      }}
+      className="w-full min-h-screen flex flex-col items-center py-10 md:py-20 px-4 bg-gradient-to-br from-black via-gray-900 to-black"
     >
-      <motion.h2
-        className="text-4xl w-full text-right pr-60 font-bold mb-12 themed-text-purple"
+      <motion.div
+        className="text-2xl md:text-4xl w-full text-center font-bold mb-8 md:mb-12 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent flex flex-col md:flex-row items-center justify-center gap-2 drop-shadow-[0_0_10px_rgba(239,68,68,0.5)]"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }} 
         viewport={{ once: true }}
       >
-        <Hammer className="inline-block font-bold mr-2 w-12 h-12 themed-text-purple" />
-        <h2>Skills</h2>
-      </motion.h2>
+        <Hammer className="inline-block font-bold mr-2 w-8 h-8 md:w-12 md:h-12 text-red-500" />
+        <h2 className="text-2xl md:text-4xl">Skills</h2>
+      </motion.div>
 
-      <div className="columns-1 sm:columns-2 lg:columns-3 z-90 gap-6 max-w-6xl w-full">
+      <div className="columns-1 md:columns-2 lg:columns-3 z-90 gap-4 md:gap-6 max-w-6xl w-full">
   {skills.map((category, index) => (
     <motion.div
       key={category.title}
@@ -119,15 +118,15 @@ export const SkillsSection: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="mb-6 break-inside-avoid bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+      className="mb-4 md:mb-6 break-inside-avoid bg-black/60 backdrop-blur-sm p-4 md:p-6 rounded-2xl shadow-2xl shadow-red-500/20 hover:shadow-red-500/30 transition-all duration-300 transform hover:-translate-y-1 border border-red-500/30"
     >
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
         {category.icon}
-        <h3 className="text-xl font-semibold text-gray-800">
+        <h3 className="text-lg md:text-xl font-semibold text-gray-200">
           {category.title}
         </h3>
       </div>
-      <ul className="list-disc ml-5 space-y-1 text-gray-700 text-sm text-left">
+      <ul className="list-disc ml-5 space-y-1 text-gray-300 text-sm text-left">
         {category.items.map((item, i) => (
           <li key={i}>{item}</li>
         ))}

@@ -4,26 +4,60 @@
 #root {
   margin: 0;
   text-align: center;
-  height: fit-content;
+  height: auto;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
 .perspective {
   perspective: 1000px;
 }
 
+/* Temple animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes fade-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.3; }
+}
+
+.temple-float-1 {
+  animation: float 8s ease-in-out infinite;
+}
+
+.temple-float-2 {
+  animation: float-slow 10s ease-in-out infinite 1s;
+}
+
+.temple-float-3 {
+  animation: float 12s ease-in-out infinite 2s;
+}
+
 .themed-text-yellow{
-  color: #f2ac16;
+  color: #ef4444;
 }
 
 .themed-text-purple{
-  color: #2e0161;
+  color: #ef4444;
 }
 
 .themed-bg-yellow {
-  background-color: #f2ac16;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
 }
 .themed-bg-purple {
-  background-color: #2e0161;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
 }
 
 /* global styles or tailwind.css */

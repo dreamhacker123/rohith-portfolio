@@ -52,7 +52,7 @@ const items = [
   
 export const InfiniteScrollSection: React.FC = () => {
   return (
-    <div className="h-screen w-[65%] flex" onWheel={(e) => {
+    <div className="h-auto md:h-screen w-full md:w-[65%] flex flex-col md:flex-row items-center justify-center p-4 md:p-0" onWheel={(e) => {
         const el = e.currentTarget;
         const isAtTop = el.scrollTop === 0 && e.deltaY < 0;
         const isAtBottom =
@@ -63,16 +63,28 @@ export const InfiniteScrollSection: React.FC = () => {
           e.preventDefault();  // prevent native propagation
         }
       }}>
-      <InfiniteScroll
-        items={items as never[]}
-        width={"300px"}
-        itemMinHeight={120}
-        autoplay={true}
-        autoplaySpeed={1.8}
-        isTilted={true}
-        autoplayDirection="down"
-        pauseOnHover={true}
-      />
+      {/* Simple list for mobile */}
+      <div className="md:hidden flex flex-wrap gap-4 justify-center">
+        {items.map((item, idx) => (
+          <div key={idx} className="text-white text-sm">
+            {item.content}
+          </div>
+        ))}
+      </div>
+      
+      {/* Diagonal scroll for desktop */}
+      <div className="hidden md:flex w-full h-full">
+        <InfiniteScroll
+          items={items as never[]}
+          width={"300px"}
+          itemMinHeight={120}
+          autoplay={true}
+          autoplaySpeed={1.8}
+          isTilted={true}
+          autoplayDirection="down"
+          pauseOnHover={true}
+        />
+      </div>
     </div>
   );
 };

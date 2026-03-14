@@ -10,15 +10,12 @@ type Hobby = {
   link?: string;
 };
 
-const HOBBY_IMAGE =
-  "https://res.cloudinary.com/dqsxhtkyo/image/upload/v1752354199/WhatsApp_Image_2025-07-13_at_1.49.10_AM_t6fpmm.jpg";
-
 const baseHobbies: Hobby[] = [
   {
     id: "art",
     title: "Miniature Art",
     description: "I love creating intricate miniature art pieces.",
-    image: "https://res.cloudinary.com/dqsxhtkyo/image/upload/v1752362277/Celebrating_Ganesh_chaturthi_with_my_micro_Ganesha_wishing_you_all_a_very_happy_Ganesh_chatu_ac3vsx.jpg",
+    image: "/miniature.jpg",
     icon: <Instagram className="w-12 h-12 text-white" />,
     link: "https://www.instagram.com/microhith.in/",
   },
@@ -27,8 +24,7 @@ const baseHobbies: Hobby[] = [
     id: "sketching",
     title: "Pencil Sketching",
     description: "Graphite & charcoal sketching during calm nights.",
-    image:
-      "https://res.cloudinary.com/dqsxhtkyo/image/upload/v1752359485/WhatsApp_Image_2025-07-13_at_4.01.05_AM_q6kc8d.jpg",
+    image: "/art.jpg",
     icon: <Instagram className="w-12 h-12 text-white" />,
     link: "https://www.instagram.com/microhith.in/",
   },
@@ -36,8 +32,7 @@ const baseHobbies: Hobby[] = [
     id: "gym",
     title: "Gym & Fitness",
     description: "Chasing strength, one rep at a time",
-    image:
-      "https://res.cloudinary.com/dqsxhtkyo/image/upload/v1752361802/WhatsApp_Image_2025-07-13_at_4.39.21_AM_kh6tzr.jpg",
+    image: "/my_gym.jpeg",
     icon: <Dumbbell className="w-12 h-12 text-white" />,
     link: "https://strava.app.link/MIJuFU9bXUb",
   },
@@ -46,7 +41,7 @@ const baseHobbies: Hobby[] = [
     title: "Photography",
     description:
       "Capturing moments through my lens, from landscapes to portraits.",
-    image: HOBBY_IMAGE,
+    image: "/photography.jpg",
     icon: <Camera className="w-12 h-12 text-white" />,
     link: "https://www.instagram.com/rohithedits.in/",
   },
@@ -55,7 +50,7 @@ const baseHobbies: Hobby[] = [
     title: "Travel",
     description:
       "Exploring new places, cultures, and cuisines. Every trip is an adventure.",
-    image:"https://res.cloudinary.com/dqsxhtkyo/image/upload/v1752361612/WhatsApp_Image_2025-07-13_at_4.36.29_AM_wnmkui.jpg",
+    image: "/travel.jpg",
     icon: <Instagram className="w-12 h-12 text-white" />,
     link: "https://www.instagram.com/rohithsatyanivas.in/",
   },
@@ -64,7 +59,7 @@ const baseHobbies: Hobby[] = [
     title: "Listening Music",
     description:
       "Big fan of AR Rahman & Harris Jayaraj. Their music fuels my creativity.",
-    image: "https://res.cloudinary.com/dqsxhtkyo/image/upload/v1752361128/arrahman-to-reveal-something-from-99-songs-at-his-ahmedabad-concert-photos-pictures-stills_kvqm4m.jpg",
+    image: "/music.jpg",
     icon: <Headphones className="w-12 h-12 text-white" />,
     link: "https://music.amazon.in/profiles/@rohithsatyanivas?ref=dm_sh_wOU3mimjjCircRvzLm6ySSQyF",
   },
@@ -138,18 +133,15 @@ export const HobbiesSection = (): JSX.Element => {
   return (
     <section
       id="hobbies"
-      className="flex w-full h-screen justify-center items-center z-80"
+      className="flex flex-col md:flex-row w-full min-h-screen md:h-screen justify-center items-center z-80 bg-gradient-to-br from-black via-gray-900 to-black"
     >
       {/* Main Carousel */}
       <div
-        className="basis-3/4 h-full p-8 flex flex-col justify-center text-black relative overflow-hidden"
-        style={{
-          background: `linear-gradient(162deg, #fff 35%, transparent 35%)`, // tailwind yellow-400
-        }}
+        className="w-full md:basis-3/4 h-auto md:h-full p-4 md:p-8 flex flex-col justify-center text-white relative overflow-hidden"
       >
         <div
           ref={scrollRef}
-          className="relative z-90 w-full h-[440px] flex gap-6 px-4 overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory scrollbar-none"
+          className="relative z-90 w-full h-[300px] md:h-[440px] flex gap-4 md:gap-6 px-2 md:px-4 overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory scrollbar-none"
           style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}
           onWheelCapture={handleWheel}
         >
@@ -159,7 +151,7 @@ export const HobbiesSection = (): JSX.Element => {
             return (
               <div
                 key={`${hobby.id}-${index}`}
-                className={`min-w-[600px] h-[420px] snap-center relative transition-all duration-500 transform rounded-xl shadow group ${
+                className={`min-w-[280px] md:min-w-[600px] h-[280px] md:h-[420px] snap-center relative transition-all duration-500 transform rounded-xl shadow group ${
                   isActive ? "scale-100 opacity-100" : "scale-95 opacity-70"
                 }`}
               >
@@ -167,6 +159,7 @@ export const HobbiesSection = (): JSX.Element => {
                   src={hobby.image}
                   alt={hobby.title}
                   className="w-full h-full object-cover rounded-xl"
+                  style={hobby.id === "gym" ? { objectPosition: "center 30%" } : undefined}
                 />
                 {hobby.icon && hobby.link && (
                   <a
@@ -178,9 +171,9 @@ export const HobbiesSection = (): JSX.Element => {
                     {hobby.icon}
                   </a>
                 )}
-                <div className="absolute bottom-0 left-0 w-full flex flex-col justify-center items-center text-center text-white bg-black/40 rounded-b-xl p-4">
-                  <h2 className="text-2xl font-bold mb-1">{hobby.title}</h2>
-                  <p className="text-sm max-w-[90%]">{hobby.description}</p>
+                <div className="absolute bottom-0 left-0 w-full flex flex-col justify-center items-center text-center text-white bg-black/40 rounded-b-xl p-2 md:p-4">
+                  <h2 className="text-lg md:text-2xl font-bold mb-1">{hobby.title}</h2>
+                  <p className="text-xs md:text-sm max-w-[90%]">{hobby.description}</p>
                 </div>
               </div>
             );
@@ -189,17 +182,17 @@ export const HobbiesSection = (): JSX.Element => {
       </div>
 
       {/* Sidebar */}
-      <div className="basis-1/4 h-full p-6 text-white overflow-y-auto">
-        <h1 className="text-4xl my-4">Hobbies</h1>
+      <div className="hidden md:block md:basis-1/4 h-full p-6 text-red-500 overflow-y-auto bg-gradient-to-br from-black/80 to-gray-900/80 border-l border-red-500/20">
+        <h1 className="text-4xl my-4 font-bold bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(239,68,68,0.5)]">Hobbies</h1>
         <div className="space-y-2">
           {baseHobbies.map((hobby, i) => (
             <div
               key={hobby.id}
               onClick={() => handleClick(i)}
-              className={`block w-full text-left z-90 px-3 py-2 rounded transition-all cursor-pointer ${
+              className={`block w-full text-left z-90 px-4 py-3 rounded-xl transition-all cursor-pointer font-medium ${
                 activeIndex % baseHobbies.length === i
-                  ? "bg-yellow-400 text-purple-900"
-                  : "hover:bg-white/10"
+                  ? "bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg shadow-red-500/30 transform scale-105"
+                  : "hover:bg-red-500/10 backdrop-blur-sm text-gray-300 border border-transparent hover:border-red-500/30"
               }`}
             >
               {hobby.title}

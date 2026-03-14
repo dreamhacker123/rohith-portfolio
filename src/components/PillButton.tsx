@@ -12,7 +12,7 @@ const PillButton: React.FC<PillButtonProps> = ({ label, onClick, className='', k
     <div
       role="button"
       onClick={onClick}
-      className={`px-10 z-10 my-4 py-1 border-2 border-[#fff] text-white cursor-pointer rounded-full ${className}`}
+      className={`px-10 z-10 my-4 py-3 bg-gradient-to-r from-black to-gray-900 border-2 border-red-500 hover:from-red-500 hover:to-red-600 text-white font-semibold cursor-pointer rounded-full shadow-lg shadow-red-500/30 hover:shadow-xl hover:shadow-red-500/50 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 ${className}`}
       key={key}
     >
       {label}
