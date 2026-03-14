@@ -10,9 +10,6 @@ type Hobby = {
   link?: string;
 };
 
-const HOBBY_IMAGE =
-  "https://res.cloudinary.com/dqsxhtkyo/image/upload/v1752354199/WhatsApp_Image_2025-07-13_at_1.49.10_AM_t6fpmm.jpg";
-
 const baseHobbies: Hobby[] = [
   {
     id: "art",
