@@ -1,14 +1,31 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
-import { Suspense, useState, useCallback, useEffect, useRef, Component, type ReactNode } from "react";
+import { Suspense, useState, useCallback, useEffect, useRef, useMemo, Component, type ReactNode } from "react";
 
-const MODEL_URL = "/model.glb";
+// Map each day of the week to a model file in public/
+const DAY_MODELS: Record<number, string> = {
+  0: "/model-sunday.glb",
+  1: "/model-monday.glb",
+  2: "/model-tuesday.glb",
+  3: "/model-wednesday.glb",
+  4: "/model-thursday.glb",
+  5: "/model-friday.glb",
+  6: "/model-saturday.glb",
+};
 
-useGLTF.preload(MODEL_URL);
+const FALLBACK_MODEL = "/model-thursday.glb";
 
-function AvatarModel({ onError }: { onError: () => void }) {
+function getModelForToday(): string {
+  const day = new Date().getDay(); // 0 = Sunday … 6 = Saturday
+  return DAY_MODELS[day] ?? FALLBACK_MODEL;
+}
+
+// Preload today's model
+useGLTF.preload(getModelForToday());
+
+function AvatarModel({ modelUrl, onError }: { modelUrl: string; onError: () => void }) {
   const group = useRef<any>(null);
-  const { scene, animations } = useGLTF(MODEL_URL, undefined, undefined, (error) => {
+  const { scene, animations } = useGLTF(modelUrl, undefined, undefined, (error) => {
     console.warn("Failed to load 3D model:", error);
     onError();
   });
@@ -66,6 +83,7 @@ function FallbackUI() {
 }
 
 export default function ModelViewer() {
+  const modelUrl = useMemo(() => getModelForToday(), []);
   const [hasError, setHasError] = useState(false);
   const [contextLost, setContextLost] = useState(false);
 
@@ -116,7 +134,7 @@ export default function ModelViewer() {
           <ambientLight intensity={3.0} />
           <directionalLight position={[3, 3, 3]} />
           <Suspense fallback={null}>
-            <AvatarModel onError={handleError} />
+            <AvatarModel modelUrl={modelUrl} onError={handleError} />
           </Suspense>
           <OrbitControls enableZoom enablePan autoRotate autoRotateSpeed={2} />
         </Canvas>
